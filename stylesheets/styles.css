@@ -20,6 +20,7 @@ body {
   align-items: center;
   margin: 0;
   font-family: var(--primary-font);
+  overflow: hidden;
 }
 
 body::after,
@@ -47,7 +48,8 @@ body::before {
 
 .profile-card {
   background-color: var(--profile-picture-background);
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   text-align: center;
   border-radius: 15px;
   overflow: hidden;
