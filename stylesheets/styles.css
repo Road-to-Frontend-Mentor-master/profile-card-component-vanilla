@@ -1,0 +1,121 @@
+:root {
+  --primary-font: 'Kumbh Sans', sans-serif;
+  --dark-cyan: hsl(185, 75%, 39%);
+  --very-dark-desaturated-blue: hsl(229, 23%, 23%);
+  --dark-grayish-blue: hsl(227, 10%, 46%);
+  --very-light-blue: #6B7082;
+  --light-gray: #E8E9EC;
+  --profile-picture-background: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-cyan);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: var(--primary-font);
+}
+
+body::after,
+body::before {
+  content: '';
+  display: block;
+  width: 1000px;
+  height: 1000px;
+  position: absolute;
+  background-size: 100% 100%;
+  z-index: -1;
+}
+
+body::after {
+  background-image: url('./../assets/images/bg-pattern-top.svg');
+  top: -25%;
+  left: -25%;
+}
+
+body::before {
+  background-image: url('./../assets/images/bg-pattern-bottom.svg');
+  bottom: -25%;
+  right: -25%;
+}
+
+.profile-card {
+  background-color: var(--profile-picture-background);
+  width: 350px;
+  text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 50px 100px rgba(8, 70, 94, .51);
+}
+
+.profile-card .header {
+  padding-top: 96px;
+  background-image: url('./../assets/images/bg-pattern-card.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 144px;
+}
+
+.profile-card .picture {
+  display: block;
+  width: 96px;
+  border-radius: 50%;
+  border: 5px solid var(--profile-picture-background);
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.profile-card .content {
+  padding: 1.5rem 0;
+}
+
+.profile-card .username {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--very-dark-desaturated-blue);
+  margin: 0 0 .5rem;
+}
+
+.profile-card .age,
+.profile-card .location {
+  color: var(--very-light-blue);
+}
+
+.profile-card .age {
+  margin-left: 1rem;
+}
+
+.profile-card .location {
+  margin: 0;
+  font-size: 14px;
+}
+
+.profile-card .footer {
+  border-top: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.profile-card .stats {
+  font-size: 18px;
+  margin: 0;
+}
+
+.profile-card .stats:not(:last-child) {
+  color: var(--very-dark-desaturated-blue);
+  margin-right: 52px;
+}
+
+.profile-card .stats span {
+  display: block;
+  color: var(--very-light-blue);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
