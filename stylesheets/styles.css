@@ -56,6 +56,68 @@ body::before {
   box-shadow: 0 50px 100px rgba(8, 70, 94, .51);
 }
 
+/*
+ * Recursos útiles:
+ * Background-repeat: https://developer.mozilla.org/es/docs/Web/CSS/background-repeat
+ * Background-size: https://developer.mozilla.org/es/docs/Web/CSS/background-size
+ * Explicación de Dorian de su curso de CSS básico: https://youtu.be/ouOZi3pDQPQ?t=249
+ *
+ * Lo primero que tenemos que saber de la propiedad background-image
+ * es que es perfectamente compatible con la propiedad background-color.
+ * Para probar esto, podéis hacer lo siguiente:
+ *
+ * 1. Crear un div que tenga un ancho de 300px y un alto de 250px.
+ * 2. Utilizar una imagen para usarla más adelante con background-image. Da
+ *    igual que la imagen luego se distorsiene, es simplemente para que
+ *    entendáis cómo se puede manipular el fondo de una imagen aplicada con CSS.
+ * 3. A este div dadle un background-color: red. Veréis que evidentemente ocupa
+ *    todo el ancho y alto del elemento.
+ * 4. Ahora aplicad la imagen de fondo con background-image: url(url_foto). Si la
+ *    imagen es más pequeña que el div, por defecto veréis que se repite tanto en
+ *    el eje X como en el eje Y.
+ * 5. Utilizad background-repeat: no-repeat; para que la imagen no se repita en
+ *    ninguna dirección.
+ * 6. Ahora podéis cambiar el ancho y el alto del background-image mediante la
+ *    propiedad background-size. Si utilizáis background-size: 20px 50px; vais a ver
+ *    cómo la imagen ocupa 20px de ancho por 50px de alto. Si utilizáis
+ *    background-image: 100% 100px; vais a ver cómo la imagen ocupa el 100% del ancho
+ *    de su contenedor y 100px de alto.
+ * 7. Observad que tenéis por una lado la imagen aplicada con background-image y que
+ *    además también tenéis el color de fondo rojo que aplicasteis con background-color.
+ *
+ * El cálculo realizado para centrar la imagen en el div es el siguiente:
+ *
+ * 1. Tenemos un padding-top del header de 96px.
+ * 2. La imagen (.profile-card .picture) tiene un ancho y un alto de 96px también.
+ * 3. El alto total del header es de 96px que tiene de padding-top + 96px que tiene
+ *    de alto la imagen (en total, 192px).
+ * 4. Ahora tenemos que calcular el alto que tiene que tener el fondo con la imagen, es
+ *    decir, tenemos que calcular cuántos píxeles hay desde el border-top del header
+ *    hasta la mitad de la imagen de perfil. Para ello, simplemente sumamos.
+ *        - 96px de padding top del header (si aplicásemos un background-size: 100% 96px;
+ *          veríamos cómo el alto de la imagen de fondo terminaría justo donde empieza la
+ *          imagen de perfil).
+ *        - La mitad del alto de la imagen (96px / 2 = 48px).
+ *        - Resultado: 96px + 48px = 144px, por lo que nuestro background-size será:
+ *          background-size: 100% 144px; De aquí sacaríamos la siguiente ecuación:
+ *          distancia del border top del header a la imagen + 1/2 del alto de la
+ *          imagen de perfil.
+ *
+ * Para este caso en concreto, podríamos utilizar background-size: 100% 75%; porque se da
+ * la casualidad de que el alto de la imagen es igual al padding-top del header.
+ * Proporcionalmente hablando: 25% del alto es igual a 48px, 50% es igual a 96px, 75% es
+ * igual a 144px y 100% es igual a 192px.
+ *
+ * Lo mejor que podéis hacer para entenderlo es ir modificando los valores y ver cómo
+ * va cambiando el diseño. También podríais hacer más ejercicios similares a este, como
+ * por ejemplo en lugar de que el header tenga un padding-top de 96px y la imagen un ancho y un
+ * alto de 96px, podríais hacer que el padding-top del header fuese 40px y el ancho y el alto
+ * de la imagen fuesen 65px (por ejemplo).
+ *
+ * Si el jueves hay dudas con esto, estoy seguro de que podremos hacer algún ejercicio
+ * explicanado esto paso a paso :D
+*/
+
 .profile-card .header {
   padding-top: 96px;
   background-image: url('./../assets/images/bg-pattern-card.svg');
